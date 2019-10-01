@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- Metas -->
+<th:block th:fragment="metas">
+	<title>Mi Aplicacion Web</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="description" content="Aplicacion Web" />
+	<meta name="keywords" content="Aplicacion Web, Sitio Web, Spring Boot" />
+	<meta name="author" content="Alex Daniel Cabello Leon" />
+	<meta name="copyright" content="adanyc" />
+	<meta name="robots" content="all, index, follow" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta name="title" content="Aplicaion Web" />
+	<meta name="distribution" content="Global" />
+</th:block>
+
+<!-- CSS -->
+<th:block th:fragment="css">
+	<link rel="stylesheet" th:href="@{/css/style.css}"/>
+	<link rel="stylesheet" th:href="@{/js/libs/bootstrap/css/bootstrap.min.css}"/>
+</th:block>
+
+<!-- Mensajeria -->
+<!--<th:block th:fragment="msgs">
+	<div th:each="objMensaje : ${listaMsgExito}"
+		th:class="@{'mensaje ' + ${objMensaje.tipoMsg} + ''}">
+		<span th:text="${objMensaje.tipoMsg}"></span> ... <span
+			th:text="${objMensaje.msg}"></span>
+	</div>
+	<div th:each="objMensaje : ${listaMsgError}"
+		th:class="@{'mensaje ' + ${objMensaje.tipoMsg} + ''}">
+		<span th:text="${objMensaje.tipoMsg}"></span> ... <span
+			th:text="${objMensaje.msg}"></span>
+	</div>
+</th:block> -->
+
+<!-- JS -->
+<th:block th:fragment="js">
+	<script type="text/javascript" th:src="@{/js/libs/jquery/jquery-3.3.1.slim.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/libs/popper/popper.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/libs/bootstrap/js/bootstrap.min.js}"></script>
+</th:block>
+</html>

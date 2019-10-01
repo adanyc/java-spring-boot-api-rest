@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <th:block th:insert="fragments/general.html :: metas"></th:block>
+  <th:block th:insert="fragments/general.html :: css"></th:block>
+</head>
+
+<body>
+  <div class="container" style="margin-top: 50px">
+    <form method="post" id="form_generico">
+      <div class="card">
+        <div class="card-header">CRUD - Empleados</div>
+        <div class="card-body">
+          <div class="form-group form-row">
+            <label for="txtBuscar" class="col-sm-2 col-md-1 col-form-label col-form-label-sm">Buscar</label>
+            <div class="col-sm-5 col-md-4 col-lg-3">
+              <input type="text" class="form-control form-control-sm" id="nombre" name="nombre" placeholder="Primer nombre">
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+              <button type="button" class="btn btn-secondary btn-sm" onclick="buscarPorNombre();" title="Buscar">Buscar</button>
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-1 offset-sm-1 offset-md-3 offset-lg-5">
+              <a th:href="@{/buscarPorCodigo/0}" class="btn btn-primary btn-sm btn-block" title="Nuevo">Nuevo</a>
+            </div>
+          </div>
+
+          <h5 class="card-title"></h5>
+          <table class="table table-bordered table-sm table-hover mb-0" th:fragment="listaEmpleados">
+            <thead class="thead-dark">
+              <tr>
+                <th>C&oacute;digo</th>
+                <th>Primer Nombre</th>
+                <th>Segundo Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th class="text-center">Sexo</th>
+                <th class="text-center"></th>
+                <th class="text-center"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="empleado: ${listaEmpleados}">
+                <td th:text="${empleado.codigo}" />
+                <td th:text="${empleado.primerNombre}" />
+                <td th:text="${empleado.segundoNombre}" />
+                <td th:text="${empleado.apellidoPaterno}" />
+                <td th:text="${empleado.apellidoMaterno}" />
+                <td th:text="${empleado.sexo}" class="text-center" />
+                <td class="text-center"><a th:href="@{/buscarPorCodigo/{codigo}(codigo=${empleado.codigo})}" class="btn btn-info btn-sm">Editar</a></td>
+                <td class="text-center"><a th:href="@{/eliminar/{codigo}(codigo=${empleado.codigo})}" class="btn btn-danger btn-sm" title="Eliminar">Eliminar</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Scripts -->
+  <th:block th:insert="fragments/general.html :: js"></th:block>
+  <script type="text/javascript" th:src="@{js/funciones/jsEmpleados.js}"></script>
+</body>
+
+</html>
