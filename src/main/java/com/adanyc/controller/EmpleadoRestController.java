@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,6 +36,13 @@ public class EmpleadoRestController {
 	// 1ra forma
 	@RequestMapping(value = "/listarTodos")
 	public ResponseEntity<List<Empleado>> listarTodos() {
+		List<Empleado> lista = empleadoService.listarTodos();
+		return new ResponseEntity<List<Empleado>>(lista, HttpStatus.OK);
+	}
+
+	@RequestMapping(path = "/listarTodosXML", produces = { MediaType.APPLICATION_XML_VALUE,
+			MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<List<Empleado>> listarTodosXML() {
 		List<Empleado> lista = empleadoService.listarTodos();
 		return new ResponseEntity<List<Empleado>>(lista, HttpStatus.OK);
 	}
